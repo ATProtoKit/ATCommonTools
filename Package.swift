@@ -17,15 +17,23 @@ let package = Package(
         .library(
             name: "ATCommonTools",
             targets: ["ATCommonTools"]),
+        .library(
+            name: "ATCommonWeb",
+            targets: ["ATCommonWeb"])
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "ATCommonTools"),
+            name: "ATCommonTools",
+            dependencies: [
+                "ATCommonWeb"
+            ]
+        ),
+        .target(name: "ATCommonWeb"),
         .testTarget(
             name: "ATCommonToolsTests",
-            dependencies: ["ATCommonTools"]
+            dependencies: ["ATCommonTools", "ATCommonWeb"]
         ),
     ]
 )
