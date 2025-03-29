@@ -1,0 +1,33 @@
+{
+  "originHash" : "65e1b5aceef710c95c754aba66a53c9e672d96e8939c96e2d1649239f91563d1",
+  "pins" : [
+    {
+      "identity" : "multiformatskit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ATProtoKit/MultiformatsKit.git",
+      "state" : {
+        "revision" : "d463b3595b21a2006f9986a91e1071bf62fd73e9",
+        "version" : "0.1.1"
+      }
+    },
+    {
+      "identity" : "swift-asn1",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-asn1.git",
+      "state" : {
+        "revision" : "ae33e5941bb88d88538d0a6b19ca0b01e6c76dcf",
+        "version" : "1.3.1"
+      }
+    },
+    {
+      "identity" : "swift-crypto",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-crypto.git",
+      "state" : {
+        "revision" : "a6ce32a18b81b04ce7e897d1d98df6eb2da04786",
+        "version" : "3.12.2"
+      }
+    }
+  ],
+  "version" : 3
+}
