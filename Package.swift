@@ -21,16 +21,25 @@ let package = Package(
             name: "ATCommonWeb",
             targets: ["ATCommonWeb"])
     ],
+    dependencies: [
+        .package(url: "https://github.com/ATProtoKit/MultiformatsKit.git", .upToNextMajor(from: "0.0.1"))
+    ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
             name: "ATCommonTools",
             dependencies: [
-                "ATCommonWeb"
+                "ATCommonWeb",
+                .product(name: "MultiformatsKit", package: "multiformatskit")
             ]
         ),
-        .target(name: "ATCommonWeb"),
+        .target(
+            name: "ATCommonWeb",
+            dependencies: [
+                .product(name: "MultiformatsKit", package: "multiformatskit")
+            ]
+        ),
         .testTarget(
             name: "ATCommonToolsTests",
             dependencies: ["ATCommonTools", "ATCommonWeb"]
