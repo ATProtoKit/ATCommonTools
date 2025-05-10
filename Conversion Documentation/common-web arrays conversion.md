@@ -1,4 +1,4 @@
-#  Conversion for `common-web/arrays.ts`
+# Conversion for `common-web/arrays.ts`
 
 ## `export function keyBy<T, K extends keyof T>(arr: readonly T[], key: K,): Map<T[K], T>`
 

@@ -1,4 +1,4 @@
-#  Conversion for `common-web/retry.ts`
+# Conversion for `common-web/retry.ts`
 
 ## `export type RetryOptions`
 

@@ -1,4 +1,4 @@
-#  Conversion for `common-web/utils.ts`
+# Conversion for `common-web/utils.ts`
 
 ## `export const noUndefinedVals = <T>(obj: Record<string, T | undefined>,): Record<string, T>`
 

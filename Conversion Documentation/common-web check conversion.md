@@ -1,4 +1,4 @@
-#  Conversions for `common-web/check.ts`
+# Conversions for `common-web/check.ts`
 
 ## `export interface Checkable<T>`
 

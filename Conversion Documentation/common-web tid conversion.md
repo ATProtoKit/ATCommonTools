@@ -1,4 +1,4 @@
-#  Conversion for `common-web/tid.ts`
+# Conversion for `common-web/tid.ts`
 
 ## `function dedash(str: string): string`
 

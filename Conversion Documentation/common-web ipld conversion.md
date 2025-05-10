@@ -1,4 +1,4 @@
-#  #  Conversion for `common-web/ipld.ts`
+# Conversion for `common-web/ipld.ts`
 
 ## `export type JsonValue`
 
