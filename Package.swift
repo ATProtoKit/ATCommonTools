@@ -7,7 +7,7 @@ let package = Package(
     name: "ATCommonTools",
     platforms: [
         .iOS(.v14),
-        .macOS(.v13),
+        .macOS(.v12),
         .tvOS(.v14),
         .visionOS(.v1),
         .watchOS(.v9)
