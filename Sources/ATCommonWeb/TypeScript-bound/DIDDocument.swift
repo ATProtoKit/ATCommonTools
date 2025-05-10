@@ -103,7 +103,7 @@ public struct DIDDocument: Codable {
     /// - Returns: A tuple, which contains the verification type and the multibase public key, or `nil` (if
     /// it failed to find one).
     public func getVerificationInformation(keyID: String) -> (type: String, multibasePublicKey: String)? {
-        var key = self.verificationMethod?.first { $0.id == "#\(keyID)" }
+        let key = self.verificationMethod?.first { $0.id == "#\(keyID)" }
 
         guard let key = key else {
             return nil
