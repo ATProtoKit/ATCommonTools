@@ -1,13 +1,12 @@
 {
-  "originHash" : "65e1b5aceef710c95c754aba66a53c9e672d96e8939c96e2d1649239f91563d1",
   "pins" : [
     {
       "identity" : "multiformatskit",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/ATProtoKit/MultiformatsKit.git",
       "state" : {
-        "revision" : "d463b3595b21a2006f9986a91e1071bf62fd73e9",
-        "version" : "0.1.1"
+        "revision" : "343adc6aea84e83a7a8a7b7d6d92109e249d2591",
+        "version" : "0.2.0"
       }
     },
     {
@@ -29,5 +28,5 @@
       }
     }
   ],
-  "version" : 3
+  "version" : 2
 }

@@ -22,7 +22,7 @@ let package = Package(
             targets: ["ATCommonWeb"])
     ],
     dependencies: [
-        .package(url: "https://github.com/ATProtoKit/MultiformatsKit.git", .upToNextMajor(from: "0.0.1"))
+        .package(url: "https://github.com/ATProtoKit/MultiformatsKit.git", .upToNextMajor(from: "0.2.0"))
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
