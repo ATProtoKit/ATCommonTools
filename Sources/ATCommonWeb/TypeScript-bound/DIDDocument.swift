@@ -73,10 +73,10 @@ public struct DIDDocument: Codable {
         return true
     }
 
-    /// Attempts to get the decentralized identifier (DID) within the DID document.
+    /// Attempts to get the handle of the user account.
     ///
-    /// - Returns: The decentralized identifier (DID), or `nil` (if it can't find it).
-    public func getDID() -> String? {
+    /// - Returns: The handle of the user account, or `nil` (if it can't find it).
+    public func getHandle() -> String? {
         // This searches the array. If there's nothing in the array, it returns `nil`.
         // If there is an item in the array, it will stop looping when it finds
         // the entry that contains "at://" and returns it (without the "at://").
