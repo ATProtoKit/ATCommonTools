@@ -4,6 +4,8 @@
 
 This is redundant and won't be converted.
 
+This is pretty much doing the job of `Codable`.
+
 ## `export interface Def<T>`
 
 This is redundant and won't be converted.
