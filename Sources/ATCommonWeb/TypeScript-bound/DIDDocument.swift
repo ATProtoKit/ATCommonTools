@@ -22,6 +22,13 @@ public struct VerificationMethod: Codable {
     /// A multibase-encoded public key string.
     public let multibasePublicKey: String
 
+    public init(id: String, type: String, controller: String, multibasePublicKey: String) {
+        self.id = id
+        self.type = type
+        self.controller = controller
+        self.multibasePublicKey = multibasePublicKey
+    }
+
     enum CodingKeys: String, CodingKey {
         case id
         case type
@@ -41,6 +48,12 @@ public struct Service: Codable {
 
     /// The URL or endpoint associated with the service.
     public let serviceEndpoint: String
+
+    public init(id: String, type: String, serviceEndpoint: String) {
+        self.id = id
+        self.type = type
+        self.serviceEndpoint = serviceEndpoint
+    }
 }
 
 /// A DID document containing identity-related information.
