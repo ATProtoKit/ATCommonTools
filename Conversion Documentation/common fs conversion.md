@@ -1,4 +1,4 @@
-#  Conversion for `common/fs.ts`
+# Conversion for `common/fs.ts`
 
 ## `export const fileExists = async (location: string): Promise<boolean>`
 
