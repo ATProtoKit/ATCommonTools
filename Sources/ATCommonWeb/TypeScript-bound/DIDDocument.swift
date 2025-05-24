@@ -8,7 +8,7 @@
 import Foundation
 
 /// A representation of a verification method used in a DID document.
-public struct VerificationMethod: Codable {
+public struct VerificationMethod: Sendable, Codable {
 
     /// The unique identifier of the verification method.
     public let id: String
@@ -38,7 +38,7 @@ public struct VerificationMethod: Codable {
 }
 
 /// A representation of a service entry in a DID document.
-public struct Service: Codable {
+public struct Service: Sendable, Codable {
 
     /// The unique identifier of the service.
     public let id: String
@@ -57,7 +57,7 @@ public struct Service: Codable {
 }
 
 /// A DID document containing identity-related information.
-public struct DIDDocument: Codable {
+public struct DIDDocument: Sendable, Codable {
 
     /// The unique decentralized identifier (DID) string that identifies this document.
     public let id: String
