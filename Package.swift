@@ -22,7 +22,8 @@ let package = Package(
             targets: ["ATCommonWeb"])
     ],
     dependencies: [
-        .package(url: "https://github.com/ATProtoKit/MultiformatsKit.git", .upToNextMajor(from: "0.3.0"))
+        .package(url: "https://github.com/ATProtoKit/MultiformatsKit.git", .upToNextMajor(from: "0.3.0")),
+        .package(url: "https://github.com/nnabeyang/swift-cbor", from: "0.0.4")
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -31,7 +32,8 @@ let package = Package(
             name: "ATCommonTools",
             dependencies: [
                 "ATCommonWeb",
-                .product(name: "MultiformatsKit", package: "multiformatskit")
+                .product(name: "MultiformatsKit", package: "multiformatskit"),
+                .product(name: "SwiftCbor", package: "swift-cbor")
             ]
         ),
         .target(

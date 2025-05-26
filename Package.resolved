@@ -19,6 +19,15 @@
       }
     },
     {
+      "identity" : "swift-cbor",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/nnabeyang/swift-cbor",
+      "state" : {
+        "revision" : "49838182e0189dc7eb27018d3d707a939b9c20d6",
+        "version" : "0.0.4"
+      }
+    },
+    {
       "identity" : "swift-crypto",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-crypto.git",
