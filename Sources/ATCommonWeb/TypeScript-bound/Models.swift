@@ -35,9 +35,6 @@ public struct CARHeader: Codable {
     }
 }
 
-/// A protocol that defines a generic schema for validating data.
-import Foundation
-
 /// An enum to represent different schema types.
 public enum SchemaType {
 
