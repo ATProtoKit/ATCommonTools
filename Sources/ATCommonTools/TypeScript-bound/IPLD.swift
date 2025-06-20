@@ -110,35 +110,6 @@ public enum IPLD {
         return try await CID(version: .v1, data: remainingData)
     }
 
-//    public static func verifyCIDTransformStream(
-//        input: AsyncStream<Data>,
-//        expectedCID: CID
-//    ) -> AsyncThrowingStream<Data, Error> {
-//        var hasher = SHA256()
-//
-//        return AsyncThrowingStream { continuation in
-//            do {
-//                for try await chunk in input {
-//                    hasher.update(data: chunk)
-//                    continuation.yield(chunk)
-//                }
-//
-//                let digest = hasher.finalize()
-//                let actualCID = try await CID(version: .v1, data: Data(digest))
-//
-//                guard actualCID == expectedCID else {
-//                    throw CIDError.invalidCID(
-//                        message: "The provided CID does not match the data. Expected: \(expectedCID), Actual: \(actualCID)."
-//                    )
-//                }
-//
-//                continuation.finish()
-//            } catch {
-//                continuation.finish(throwing: error)
-//            }
-//        }
-//    }
-
     /// Returns a validated stream of `Data` chunks, ensuring the final stream contents match the given CID.
     ///
     /// - Parameters:
