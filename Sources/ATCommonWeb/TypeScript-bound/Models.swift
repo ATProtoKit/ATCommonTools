@@ -50,7 +50,7 @@ public enum SchemaType {
     /// Represents a schema for validating `CARHeader` values
     case carHeader
 
-    /// Represents a schema for validating `[String: UnknownType` values.
+    /// Represents a schema for validating `[String: UnknownType]` values.
     case array
 
     /// Represents a schema for validating `UnknownType` values.
