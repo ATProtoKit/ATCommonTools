@@ -16,7 +16,7 @@ public enum IPLD {
 
     /// Converts a `Data` object to a CBOR block.
     ///
-    /// - Parameter value: The `Data` value to convert.
+    /// - Parameter data: The `Data` value to convert.
     /// - Returns: A tuple, which contains the original data value, the encoded CBOR block, and the CID of
     /// the hashed value.
     ///

@@ -164,10 +164,9 @@ public struct DIDDocument: Sendable, Codable {
 
     /// Attempts to get the service endpoint for the DID document.
     ///
-    /// - Parameters:
-    ///   - options: A tuple, containing the `id` and `type`. Both arguments are of type `String`.
+    /// - Parameter options: A tuple, containing the `id` and `type`. Both arguments are of type `String`.
     ///   `type` is optional.
-    ///   - Returns: The URL of the service endpoint, or `nil` (if it can't find it).
+    /// - Returns: The URL of the service endpoint, or `nil` (if it can't find it).
     public func getServiceEndpoint(options: (id: String, type: String?)) -> URL? {
         let service = self.service?.first { $0.id == options.id }
 
