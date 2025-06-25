@@ -23,7 +23,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/ATProtoKit/MultiformatsKit.git", .upToNextMajor(from: "0.3.0")),
-        .package(url: "https://github.com/nnabeyang/swift-cbor", from: "0.0.4"),
+        .package(url: "https://github.com/MasterJ93/swift-cbor.git", .upToNextMajor(from: "0.0.1")),
         .package(url: "https://github.com/apple/swift-crypto.git", from: "3.12.2")
     ],
     targets: [

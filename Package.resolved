@@ -21,10 +21,10 @@
     {
       "identity" : "swift-cbor",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/nnabeyang/swift-cbor",
+      "location" : "https://github.com/MasterJ93/swift-cbor.git",
       "state" : {
-        "revision" : "49838182e0189dc7eb27018d3d707a939b9c20d6",
-        "version" : "0.0.4"
+        "revision" : "640a30c0651d734f21b800b221c60feee6382e69",
+        "version" : "0.0.5"
       }
     },
     {
