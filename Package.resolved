@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-asn1.git",
       "state" : {
-        "revision" : "a54383ada6cecde007d374f58f864e29370ba5c3",
-        "version" : "1.3.2"
+        "revision" : "f70225981241859eb4aa1a18a75531d26637c8cc",
+        "version" : "1.4.0"
       }
     },
     {
@@ -23,8 +23,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/MasterJ93/swift-cbor.git",
       "state" : {
-        "revision" : "640a30c0651d734f21b800b221c60feee6382e69",
-        "version" : "0.0.5"
+        "revision" : "8ac02ada4126a7974b50da8679f643e400d5fd82",
+        "version" : "0.0.7"
       }
     },
     {
