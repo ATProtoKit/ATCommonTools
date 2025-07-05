@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftCbor
 import MultiformatsKit
 
 /// A namespace contains types and utilities for working with IPLD (InterPlanetary Linked Data) values,
@@ -16,23 +17,29 @@ public enum IPLD: Equatable {
     /// arbitrary JSON data.
     public enum JSONValue: Codable, Equatable, Hashable {
 
-        /// A `String` object.
-        case string(String)
-
-        /// A `Double` object.
-        case number(Int)
+        /// A `nil` value.
+        case `nil`
 
         /// A `Bool` value.
         case bool(Bool)
 
-        /// A `nil` value.
-        case `nil`
+        /// A `Double` object.
+        case number(Int)
+
+        /// A `String` object.
+        case string(String)
 
         /// An `Array` of `JSONValue` objects.
         case array([JSONValue])
 
         /// A `Dictionary` object, with `JSONValue` as the value.
         case dictionary([String: JSONValue])
+
+        /// A `Data`  object.
+        case data(Data)
+
+        /// A CID value to another DAG-CBOR object.
+        case cid(CID)
 
         public init(from decoder: Decoder) throws {
             let container = try decoder.singleValueContainer()
@@ -49,6 +56,10 @@ public enum IPLD: Equatable {
                 self = .array(array)
             } else if let object = try? container.decode([String: JSONValue].self) {
                 self = .dictionary(object)
+            } else if let value = try? container.decode(Data.self) {
+                self = .data(value)
+            } else if let value = try? container.decode(CID.self) {
+                self = .cid(value)
             } else {
                 throw Swift.DecodingError.dataCorruptedError(in: container, debugDescription: "Unsupported JSON value")
             }
@@ -69,6 +80,10 @@ public enum IPLD: Equatable {
                 case .array(let value):
                     try container.encode(value)
                 case .dictionary(let value):
+                    try container.encode(value)
+                case .data(let value):
+                    try container.encode(value)
+                case .cid(let value):
                     try container.encode(value)
             }
         }
@@ -143,6 +158,10 @@ public enum IPLD: Equatable {
                 return .jsonValue(.bool(value))
             case .nil:
                 return .jsonValue(.nil)
+            case .data(let value):
+                return .bytes(value)
+            case .cid(let value):
+                return .cid(value)
         }
     }
 
