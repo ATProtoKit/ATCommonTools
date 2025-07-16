@@ -10,7 +10,7 @@ import Foundation
 /// A protocol representing a content decoding stream.
 ///
 /// This allows pluggable decompression handlers (e.g. Gzip, Brotli, etc).
-public protocol ContentDecoder: Sendable {
+public protocol ContentDecoderProtocol: Sendable {
 
     ///
     var encodingName: String { get }
@@ -20,54 +20,59 @@ public protocol ContentDecoder: Sendable {
 }
 
 ///
-public actor ContentDecoderRegistry {
+public enum ContentDecoders {
+
+    /// An array of content decoders.
+    private static let decoders: [String: ContentDecoderProtocol] = {
+        let all: [ContentDecoderProtocol] = [
+//            GzipDecoder(),
+//            BrotliDecoder(),
+//            DeflateDecoder(),
+        ]
+        return Dictionary(uniqueKeysWithValues: all.map { ($0.encodingName.lowercased(), $0) })
+    }()
 
     ///
-    private var decoders: [String: ContentDecoder] = [:]
-
-    ///
-    public init() {}
-
-    ///
-    public func register(_ decoder: ContentDecoder) {
-        decoders[decoder.encodingName.lowercased()] = decoder
+    public static func decoder(for encoding: String) -> ContentDecoderProtocol? {
+        decoders[encoding.lowercased()]
     }
 
-    ///
-    public func decoder(for name: String) -> ContentDecoder? {
-        decoders[name.lowercased()]
-    }
-
-    ///
-    public func allDecoders() -> [ContentDecoder] {
-        Array(decoders.values)
+    /// 
+    public static var allEncodingNames: [String] {
+        Array(decoders.keys)
     }
 }
 
 // MARK: Compression Algorithms -
 // gzip/x-gzip
-//struct GzipDecoder: ContentDecoder {
-//    var encodingName: String { "gzip" }
+//public struct GzipDecoder: ContentDecoderProtocol {
+//    public var encodingName: String { "gzip" }
 //
-//    func decode(_ data: Data) async throws -> Data {
-//        return try  /*name of decoder*/.decompress(data)
+//    public func decode(_ data: Data) async throws -> Data {
+//        var newData = data
+//        newData.append("|GZ".data(using: .utf8)!)
+//        return newData
 //    }
 //}
 
 // deflate
-//struct DeflateDecoder: ContentDecoder {
-//    var encodingName: String { "gzip" }
+//public struct DeflateDecoder: ContentDecoderProtocol {
+//    public var encodingName: String { "deflate" }
 //
-//    func decode(_ data: Data) async throws -> Data {
-//        return try /*name of decoder*/.decompress(data)
+//    public func decode(_ data: Data) async throws -> Data {
+//        var newData = data
+//        newData.append("|DF".data(using: .utf8)!)
+//        return newData
 //    }
 //}
 
 // br (Brotli)
-//struct BrotliDecoder: ContentDecoder {
-//    var encodingName: String { "gzip" }
+//public struct BrotliDecoder: ContentDecoderProtocol {
+//    public var encodingName: String { "br" }
 //
-//    func decode(_ data: Data) async throws -> Data {
-//        return try /*name of decoder*/.decompress(data)
+//    public func decode(_ data: Data) async throws -> Data {
+//        var newData = data
+//        newData.append("|BR".data(using: .utf8)!)
+//        return newData
 //    }
 //}
