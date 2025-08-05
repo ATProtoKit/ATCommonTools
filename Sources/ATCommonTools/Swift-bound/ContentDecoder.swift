@@ -12,17 +12,24 @@ import Foundation
 /// This allows pluggable decompression handlers (e.g. Gzip, Brotli, etc).
 public protocol ContentDecoderProtocol: Sendable {
 
-    ///
+    /// The name of the header.
     var encodingName: String { get }
 
-    /// Decode input data asynchronously.
+    /// Decodes input data asynchronously.
+    ///
+    /// - Parameter data: The data to decode.
+    /// - Returns: The now-decoded `Data` object.
     func decode(_ data: Data) async throws -> Data
 }
 
-///
+/// An enumeration which represents all decompression algorithms that the stream can use to decode
+/// the data.
 public enum ContentDecoders {
 
     /// An array of content decoders.
+    ///
+    /// This is meant to be fixed. Do not change the list of decoders unless the `common` TypeScript
+    /// package in the `atproto` repository makes a change.
     private static let decoders: [String: ContentDecoderProtocol] = {
         let all: [ContentDecoderProtocol] = [
 //            GzipDecoder(),
@@ -32,12 +39,17 @@ public enum ContentDecoders {
         return Dictionary(uniqueKeysWithValues: all.map { ($0.encodingName.lowercased(), $0) })
     }()
 
+    /// Normalizes encoding string.
     ///
-    public static func decoder(for encoding: String) -> ContentDecoderProtocol? {
+    /// - Parameter encoding: The string to decode.
+    /// - Returns: An object conforming to ``ContentDecoderProtocol`` if the normaliz
+    public static func decode(for encoding: String) -> ContentDecoderProtocol? {
         decoders[encoding.lowercased()]
     }
 
-    /// 
+    /// Compiles all of the keys from ``decoders`` into one array.
+    ///
+    /// - Returns: An array of all of the keys from ``decoders`` as `String` objects.
     public static var allEncodingNames: [String] {
         Array(decoders.keys)
     }
