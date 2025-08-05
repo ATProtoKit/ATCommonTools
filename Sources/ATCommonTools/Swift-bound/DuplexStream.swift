@@ -137,15 +137,15 @@ public actor DuplexStreamEndpoint: DuplexStream {
 public final class DuplexStreamPair: Sendable {
 
     /// The first endpoint in the duplex stream pair.
-    let endpointA: DuplexStreamEndpoint
+    public let endpointA: DuplexStreamEndpoint
 
     /// The second endpoint in the duplex stream pair.
-    let endpointB: DuplexStreamEndpoint
+    public let endpointB: DuplexStreamEndpoint
 
     /// Initializes the duplex stream pair, connecting both endpoints.
     ///
     /// The endpoints are automatically paired together.
-    init() async {
+    public init() async {
         endpointA = DuplexStreamEndpoint()
         endpointB = DuplexStreamEndpoint()
 
