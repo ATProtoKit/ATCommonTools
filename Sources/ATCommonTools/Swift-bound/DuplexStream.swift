@@ -33,7 +33,9 @@ public protocol DuplexStream: Sendable {
 ///
 /// Each endpoint manages its own incoming buffer and pending read handlers. Data written from one
 /// endpoint is delivered to its peer's `receive` method.
-public actor DuplexStreamEndpoint: DuplexStream {
+public actor DuplexStreamEndpoint: AsyncSequence, DuplexStream {
+
+    public typealias Element = Data
 
     /// A FIFO buffer storing incoming data that has not yet been read.
     private var buffer: [Data] = []
@@ -47,6 +49,10 @@ public actor DuplexStreamEndpoint: DuplexStream {
     ///
     /// This ensures there is no strong reference cycle between endpoints.
     private weak var peer: DuplexStreamEndpoint?
+
+    public nonisolated func makeAsyncIterator() -> AsyncIterator {
+        AsyncIterator(endpoint: self)
+    }
 
     /// Sets the paired endpoint for this duplex stream endpoint.
     ///
@@ -120,6 +126,16 @@ public actor DuplexStreamEndpoint: DuplexStream {
                     continuation.resume(returning: data)
                 }
             }
+        }
+    }
+
+    public struct AsyncIterator: AsyncIteratorProtocol {
+
+        /// The duplex stream endpoint that this async iterator reads data from.
+        let endpoint: DuplexStreamEndpoint
+
+        public mutating func next() async -> Data? {
+            await endpoint.read()
         }
     }
 }
