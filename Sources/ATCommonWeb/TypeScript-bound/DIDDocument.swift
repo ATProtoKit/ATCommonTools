@@ -116,7 +116,10 @@ public struct DIDDocument: Sendable, Codable {
     /// - Returns: A tuple, which contains the verification type and the multibase public key, or `nil` (if
     /// it failed to find one).
     public func getVerificationInformation(keyID: String) -> (type: String, multibasePublicKey: String)? {
-        let key = self.verificationMethod?.first { $0.id == "#\(keyID)" }
+        let key = self.verificationMethod?.first {
+            // Partially inspired by: https://bsky.app/profile/did:plc:6e4trbg7t5srtrez7yy7msn3/post/3lu2yxd4nns2a
+            $0.id == "#\(keyID)" || $0.id == "\(self.id)#\(keyID)"
+        }
 
         guard let key = key else {
             return nil
