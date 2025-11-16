@@ -47,9 +47,9 @@ public enum ContentDecoders {
         decoders[encoding.lowercased()]
     }
 
-    /// Compiles all of the keys from ``decoders`` into one array.
+    /// Compiles all of the keys into one array.
     ///
-    /// - Returns: An array of all of the keys from ``decoders`` as `String` objects.
+    /// - Returns: An array of all of the keys from as `String` objects.
     public static var allEncodingNames: [String] {
         Array(decoders.keys)
     }
