@@ -41,6 +41,7 @@ let package = Package(
         .target(
             name: "ATCommonWeb",
             dependencies: [
+                .product(name: "SwiftCbor", package: "swift-cbor"),
                 .product(name: "MultiformatsKit", package: "multiformatskit")
             ]
         ),
